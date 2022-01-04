@@ -21,6 +21,7 @@ public class LoginExtent {
 
     @BeforeClass
     public static void chrome_launch(){
+        //browser launch
         System.setProperty("webdriver.chrome.driver","./src/main/resources/Driver/chromedriver.exe");
         driver=new ChromeDriver();
         driver.manage().window().maximize();
