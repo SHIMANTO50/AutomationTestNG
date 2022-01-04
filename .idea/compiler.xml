@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="AutomationBITM04-a1826c4543c394cf481174c984d815416a927ff2" />
+        <module name="Automation" />
+        <module name="AutomationTestNG" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
