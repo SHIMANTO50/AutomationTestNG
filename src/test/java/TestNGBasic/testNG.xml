@@ -3,7 +3,7 @@
 <suite name="Login Test Suite">
     <test name="Login Functional Test">
         <classes>
-            <class name="ExtentReports.LoginExtent"></class>
+            <class name="DataProvider.DP_RegistrationTest"></class>
         </classes>
     </test>
 

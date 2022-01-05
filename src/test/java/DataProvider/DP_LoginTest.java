@@ -1,4 +1,4 @@
-package ExtentReports;
+package DataProvider;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -10,8 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
-public class LoginExtent {
-
+public class DP_LoginTest {
     public static WebDriver driver;
 
     //Extent report
@@ -52,42 +51,64 @@ public class LoginExtent {
     public static void chrome_method(){
         System.out.println("After method Executed.");
     }
-    @Test(description = "Email and password are valid")
-    public static void valid_TestCase(){
+    @Test(dataProvider = "LoginData")
+    public static void valid_TestCase(String DP_Email,String DP_Pass) {
 
         //Implement Extent Report
-        htmlReporter =new ExtentHtmlReporter("./ExtentReports/LoginTest3.html");
-        reports=new ExtentReports();
+        htmlReporter = new ExtentHtmlReporter("./ExtentReports/DP_LoginReport.html");
+        reports = new ExtentReports();
         reports.attachReporter(htmlReporter);
 
         //Information add to Report
-        reports.setSystemInfo("Project Name","Opencart");
-        reports.setSystemInfo("Module Name","Login");
-        reports.setSystemInfo("Browser","Chrome");
-        reports.setSystemInfo("Test by","Muntasir");
+        reports.setSystemInfo("Project Name", "Opencart");
+        reports.setSystemInfo("Module Name", "Login");
+        reports.setSystemInfo("Browser", "Chrome");
+        reports.setSystemInfo("Test by", "Tanjimul");
 
 
-        test=reports.createTest("Login test");
+        test = reports.createTest("Login test");
 
-        WebElement Email=driver.findElement(By.id("input-email"));
+        WebElement Email = driver.findElement(By.id("input-email"));
         Email.clear();
-        Email.sendKeys("testemail12wwsewewq56787821@test.com");
-        test.log(Status.INFO,"Email Type");
+        Email.sendKeys(DP_Email);
+        test.log(Status.INFO, "Email Type"+DP_Email);
 
-        WebElement Password=driver.findElement(By.id("input-password"));
+        WebElement Password = driver.findElement(By.id("input-password"));
         Password.clear();
-        Password.sendKeys("1234567");
-        test.log(Status.INFO,"Email Type");
+        Password.sendKeys(DP_Pass);
+        test.log(Status.INFO, "Password Type"+DP_Pass);
 
-        WebElement LoginBtn=driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/form/input"));
+        WebElement LoginBtn = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/form/input"));
         LoginBtn.click();
-        test.log(Status.INFO,"Login Button click");
+        test.log(Status.INFO, "Login Button click");
         System.out.println("Valid TestCase Executed");
 
-        test.log(Status.PASS,"Test Case Executed.");
+        test.log(Status.PASS, "Test Case Executed.");
 
         reports.flush();
     }
 
-}
+        @DataProvider(name="LoginData")
 
+         public Object [][] data(){
+             Object [][] data=new Object[3][2];
+
+             data[0][0]="test1@gmail.com";
+             data[0][1]="123467";
+
+            data[1][0]="testemail12wwsewewq56787821@test.com";
+            data[1][1]="123467";
+
+            data[2][0]="testemail12wwsewewq5678782.com";
+            data[2][1]="123467";
+
+            return data;
+
+
+
+        }
+
+
+
+
+}
